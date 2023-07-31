@@ -1,10 +1,13 @@
 // FETCH A REPO BY NAME
 
-const Repo = () => {
-    const fetch = fetch("https://api.github.com/users/bradtraversy/repos/50projects50days")
+const Repo = async ({name}) => {
+  const request = await fetch(`https://api.github.com/repos/bradtraversy/${name}`)
+  const repo = await request.json();
   return (
     <div>
-      <h2>Repo component</h2>
+      <h2>{repo.name}</h2>
+      <p>{repo.description}</p>
+      <span>{repo.forks_count} | {repo.stargazers_count} | {repo.watchers_count}</span>
     </div>
   )
 }
