@@ -1,20 +1,12 @@
+'use client'
 import Link from "next/link";
+import Course from "./components/Course";
 
 export default function Home() {
   return (
     <div>
       <h2>Welcome To Treversy Media</h2>
-      <ul>
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-        <li>
-          <Link href="/about/team">Team</Link>
-        </li>
-      </ul>
+      <Course/>
     </div>
   );
 }
