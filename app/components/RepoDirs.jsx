@@ -4,12 +4,16 @@ import Link from 'next/link';
 import React from 'react'
 import { resolve } from 'styled-jsx/css';
 const RepoDirs = async ({name}) => {
-    const request = await fetch(`https://api.github.com/repos/bradtraversy/${name}/contents`)
+    const request = await fetch(`https://api.github.com/repos/bradtraversy/${name}/contents`,{
+        next:{
+          revalidate:60
+        }
+      })
     const repoContent = await request.json();
-    await new Promise((resolve)=>setTimeout(resolve,5000))
+    // await new Promise((resolve)=>setTimeout(resolve,5000))
     const dirs = repoContent.filter(content=>content.type === "dir");
   return (
-    <div>
+    <div>  
       <h2>Directories</h2>
       <ul>
         {dirs.map(dir=>{

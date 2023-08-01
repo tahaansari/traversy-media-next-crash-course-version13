@@ -1,7 +1,11 @@
 // FETCH A REPO BY NAME
 
 const Repo = async ({name}) => {
-  const request = await fetch(`https://api.github.com/repos/bradtraversy/${name}`)
+  const request = await fetch(`https://api.github.com/repos/bradtraversy/${name}`,{
+    next:{
+      revalidate:60
+    }
+  })
   const repo = await request.json();
   return (
     <div>
